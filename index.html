@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indraraj Shahi - Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Animated background elements */
+    .bg-decoration {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .circle-1 {
+      width: 120px;
+      height: 120px;
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .circle-2 {
+      width: 80px;
+      height: 80px;
+      top: 70%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+
+    .circle-3 {
+      width: 60px;
+      height: 60px;
+      top: 30%;
+      right: 10%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+
+    .profile-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      animation: slideInUp 0.8s ease-out;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+      animation: slideInUp 0.8s ease-out 0.2s both;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 0 2rem 4rem;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      animation: slideInUp 0.8s ease-out 0.4s both;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    }
+
+    .contact-card h2 {
+      font-size: 2rem;
+      color: #2d3748;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .contact-card h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+      border-radius: 2px;
+    }
+
+    .contact-list {
+      list-style: none;
+      space-y: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      background: rgba(102, 126, 234, 0.15);
+    }
+
+    .contact-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #ff6b6b, #4ecdc4);
+      transition: width 0.3s ease;
+    }
+
+    .contact-item:hover::before {
+      width: 100%;
+      opacity: 0.1;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    }
+
+    .contact-details {
+      flex: 1;
+    }
+
+    .contact-label {
+      font-size: 0.9rem;
+      color: #718096;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-value {
+      font-size: 1.1rem;
+      color: #2d3748;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .contact-value a {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-value a:hover {
+      color: #764ba2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-card {
+        padding: 2rem;
+        margin: 0 1rem;
+      }
+      
+      .contact-item {
+        padding: 1rem;
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 1rem;
+      }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-decoration">
+    <div class="floating-circle circle-1"></div>
+    <div class="floating-circle circle-2"></div>
+    <div class="floating-circle circle-3"></div>
+  </div>
+
+  <header>
+    <div class="profile-container">
+      <div class="profile-image">
+        IS
+      </div>
+    </div>
+    <h1>Indraraj Shahi</h1>
+    <p class="subtitle">Professional Portfolio</p>
+  </header>
+
+  <main>
+    <div class="contact-card">
+      <h2>Get in Touch</h2>
+      <ul class="contact-list">
+        <li class="contact-item">
+          <div class="contact-icon">@</div>
+          <div class="contact-details">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:indrarajshahithakuri777@gmail.com">indrarajshahithakuri777@gmail.com</a>
+            </div>
+          </div>
+        </li>
+        <li class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-details">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">
+              <a href="tel:+9779764557941">+977-9764557941</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Indraraj Shahi. All rights reserved.
+  </footer>
+</body>
+</html>
